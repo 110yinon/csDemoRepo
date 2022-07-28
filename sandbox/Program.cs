@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace sandbox
                 new Person(){FirstName = "benny",LastName="2"},
                 new Person(){FirstName = "charlie",LastName="3"}
             };
-            var enumerator = arr.GetEnumerator<Person>();
+            var enumerator = arr.GetEnumerator();
             while (enumerator.MoveNext())
             {
                 // opt 1 - casting
@@ -52,5 +53,27 @@ public class Person
     public override string ToString()
     {
         return $"Person: {this.FirstName}, {this.LastName}";
+    }
+}
+public class MyList : IEnumerator<Person>
+{
+    public int Ls{ get; set; }
+    public Person Current => throw new NotImplementedException();
+
+    object IEnumerator.Current => throw new NotImplementedException();
+
+    public void Dispose()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool MoveNext()
+    {
+        
+    }
+
+    public void Reset()
+    {
+        throw new NotImplementedException();
     }
 }
