@@ -1,0 +1,8 @@
+C:\Users\MyWinToGo\Desktop\c sharp\sandbox\sandbox\bin\Debug\sandbox.exe.config
+C:\Users\MyWinToGo\Desktop\c sharp\sandbox\sandbox\bin\Debug\sandbox.exe
+C:\Users\MyWinToGo\Desktop\c sharp\sandbox\sandbox\bin\Debug\sandbox.pdb
+C:\Users\MyWinToGo\Desktop\c sharp\sandbox\sandbox\obj\Debug\sandbox.csproj.AssemblyReference.cache
+C:\Users\MyWinToGo\Desktop\c sharp\sandbox\sandbox\obj\Debug\sandbox.csproj.SuggestedBindingRedirects.cache
+C:\Users\MyWinToGo\Desktop\c sharp\sandbox\sandbox\obj\Debug\sandbox.csproj.CoreCompileInputs.cache
+C:\Users\MyWinToGo\Desktop\c sharp\sandbox\sandbox\obj\Debug\sandbox.exe
+C:\Users\MyWinToGo\Desktop\c sharp\sandbox\sandbox\obj\Debug\sandbox.pdb
