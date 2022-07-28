@@ -57,7 +57,7 @@ public class Person
 }
 public class MyList : IEnumerator<Person>
 {
-    public int Ls{ get; set; }
+    Array
     public Person Current => throw new NotImplementedException();
 
     object IEnumerator.Current => throw new NotImplementedException();
@@ -69,7 +69,7 @@ public class MyList : IEnumerator<Person>
 
     public bool MoveNext()
     {
-        
+        throw new NotImplementedException();
     }
 
     public void Reset()
