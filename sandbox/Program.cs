@@ -18,15 +18,7 @@ namespace sandbox
                 new Person(){FirstName = "benny",LastName="2"},
                 new Person(){FirstName = "charlie",LastName="3"}
             };
-            var enumerator = arr.GetEnumerator();
-            while (enumerator.MoveNext())
-            {
-                // opt 1 - casting
-                Console.WriteLine(((Person)enumerator.Current).FirstName);
-                //Or print by the toString()
-                Console.WriteLine(enumerator.Current);
-            }
-
+            //var enumerator = arr.GetEnumerator();
             //while (enumerator.MoveNext())
             //{
             //    // opt 1 - casting
@@ -34,14 +26,26 @@ namespace sandbox
             //    //Or print by the toString()
             //    Console.WriteLine(enumerator.Current);
             //}
+            
+            var myList = new MyList();
+            //foreach (var item in myList){}//ERROR - not implement the interface
 
+            var myListUpdated = new MyListUPDATED();
 
-            //foreach (var item in arr)
-            //{
-            //    Console.WriteLine(item);
+            //foreach (var item in myListUpdated){}//ERROR - not implement the interface
 
-            //}
-
+            var myListEnumerator = new MyListEnumerator();
+            foreach (var item in myListEnumerator)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine();
+            // same
+            var enumerator = myListEnumerator.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Console.WriteLine(enumerator.Current);
+            }
         }
     }
 }
@@ -55,25 +59,58 @@ public class Person
         return $"Person: {this.FirstName}, {this.LastName}";
     }
 }
-public class MyList : IEnumerator<Person>
+
+public class MyList
 {
-    Array
-    public Person Current => throw new NotImplementedException();
+    int[] myInts = { 1, 2, 3 };
+    int _index = -1;
 
-    object IEnumerator.Current => throw new NotImplementedException();
-
-    public void Dispose()
+    // indexer
+    public int this[int index]
     {
-        throw new NotImplementedException();
+        get { return myInts[index]; }
+    }
+}
+
+
+public class MyListUPDATED : IEnumerator
+{
+    int[] myInts = { 1, 2, 3 };
+    int _index = -1;
+
+    // indexer
+    public int this[int index]
+    {
+        get { return myInts[index]; }
+    }
+
+    //IEnumerator implementation
+    public object Current
+    {
+        get { return myInts[_index]; }
     }
 
     public bool MoveNext()
     {
-        throw new NotImplementedException();
+        _index++;
+        return _index < myInts.Length;
     }
 
     public void Reset()
     {
-        throw new NotImplementedException();
+        _index = 0;
     }
 }
+
+public class MyListEnumerator : IEnumerable
+{
+    public IEnumerator GetEnumerator()
+    {
+        //return new int();// not an IEnumerator (not implement it)
+        //return new bool();// not an IEnumerator (not implement it)
+        //return new string[] { "bb", "sara", "avner" };// not an IEnumerator (not implement it)
+
+        return new MyListUPDATED();
+    }
+}
+
