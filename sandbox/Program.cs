@@ -26,10 +26,10 @@ namespace sandbox
             //    //Or print by the toString()
             //    Console.WriteLine(enumerator.Current);
             //}
-            
+
             var myList = new MyList();
             //foreach (var item in myList) { }//ERROR - not implement the interface
-            foreach (var item in myList) 
+            foreach (var item in myList)
             {
                 Console.WriteLine(item);
             }
@@ -50,6 +50,17 @@ namespace sandbox
             {
                 Console.WriteLine(enumerator.Current);
             }
+
+            Console.WriteLine("******************************");
+            var kuni = new ListOfApiData.Kuni();
+            foreach (var item in kuni)
+            {
+                Console.WriteLine(item);
+            }
+
+
+
+
         }
     }
 }
@@ -81,7 +92,51 @@ public class MyList : IEnumerable
         return numerator;
     }
 }
+public class ListOfApiData : IEnumerator
+{
+    readonly int MAX_API_CALLS = 4;
+    int apiCalls = 0;
 
+
+    //int[] myInts = { 1, 2, 3 };
+    //int _index = -1;
+
+    //// indexer
+    //public int this[int index]
+    //{
+    //    get { return myInts[index]; }
+    //}
+
+    //IEnumerator implementation
+    public object Current
+    {
+        get;set;
+    }
+
+    public bool MoveNext()
+    {
+        if (apiCalls < MAX_API_CALLS)
+        {
+            var x = Math.Round(new Random().NextDouble() * 1000);
+            Current = x;
+            apiCalls++;
+            return true;
+        }
+        return false;
+    }
+
+    public void Reset()
+    {
+        apiCalls = 0;
+    }
+    public class Kuni : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            return new ListOfApiData();
+        }
+    }
+}
 
 public class MyListUPDATED : IEnumerator
 {
