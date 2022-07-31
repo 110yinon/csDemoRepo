@@ -28,7 +28,11 @@ namespace sandbox
             //}
             
             var myList = new MyList();
-            //foreach (var item in myList){}//ERROR - not implement the interface
+            //foreach (var item in myList) { }//ERROR - not implement the interface
+            foreach (var item in myList) 
+            {
+                Console.WriteLine(item);
+            }
 
             var myListUpdated = new MyListUPDATED();
 
@@ -60,15 +64,21 @@ public class Person
     }
 }
 
-public class MyList
+public class MyList : IEnumerable
 {
-    int[] myInts = { 1, 2, 3 };
+    int[] myInts = { 17, 18, 19 };
     int _index = -1;
 
     // indexer
     public int this[int index]
     {
         get { return myInts[index]; }
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        var numerator = myInts.GetEnumerator();
+        return numerator;
     }
 }
 
@@ -113,4 +123,3 @@ public class MyListEnumerator : IEnumerable
         return new MyListUPDATED();
     }
 }
-
